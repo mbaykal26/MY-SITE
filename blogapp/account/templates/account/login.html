@@ -1,0 +1,65 @@
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+  
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.1/jquery.validate.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  </head>
+  
+  
+  <body>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-5 mx-auto">
+              <div id="first">
+                  <div class="myform form ">
+                       <div class="logo mb-3">
+                           <div class="col-md-12 text-center">
+                              <h1>Login</h1>
+                           </div>
+                      </div>
+                  {% if  user.is_authenticated  %}
+                      <h2 style="padding:10px"> Hoşgeldin {{user.username}}  </h2>
+                  {% else %}
+                  <b class="text-danger">You are not logged in! </b> <br><br>
+                      <form method="post" action="{% url 'login' %}">
+                            {% csrf_token %}
+                     
+                            {% if error %}
+                                <div class="alert alert-danger">
+                                    {{error}}
+                                </div>
+                            {% endif %}  
+                     
+                          <div class="mb-3">
+                            <label for="id_username" class="form-label text-primary">Username</label>
+                            <input type="text" class="form-control" id="id_username" name="username">
+                          </div>
+                          <div class="mb-3">
+                            <label for="id_password" class="form-label text-primary">Password</label>
+                            <input type="password" class="form-control" id="id_password" name="password">
+                          </div>
+                       
+                        <button type="submit" class="btn btn-block mybtn btn-success tx-tfm"> Login</button>
+                      </form>
+              
+                  {% endif %}
+  
+                     
+                   
+                  </div>
+              </div>
+  
+              </div>
+          </div>
+      </div>   
+           
+  </body>
+  
+  
+  
+  
+  

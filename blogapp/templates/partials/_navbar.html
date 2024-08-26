@@ -1,0 +1,55 @@
+<div class="container-fluid">
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'home' %}">Blog Uygulaması | </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar01" aria-controls="navbar01">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbar01">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}"> Anasayfa </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'blogs' %}"> Bloglar </a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ms-auto">
+          {% if user.is_authenticated  %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "logout" %}"> Logout </a>
+                {% comment %} <form action="{% url 'logout' %}?next=/login" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-outline-danger">Log out</button>
+                </form> {% endcomment %}
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href=""> Welcome </a>
+              </li>
+              <li class="nav-item">
+                <strong class="nav-link text-black"> {{user.username|title}}</strong>
+              </li>
+
+
+          {% else %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "login" %}"> Login </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "register" %}"> Register </a>
+              </li>
+
+          {% endif %}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</div>
+
+{% comment %} 
+file:///C:/Uzman%20Docs/modern-admin-4/modern-admin-clean-bootstrap-4/modern-admin/html/ltr/vertical-menu-template/social-feed.html
+ {% endcomment %}
